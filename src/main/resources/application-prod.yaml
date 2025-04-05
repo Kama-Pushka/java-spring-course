@@ -1,0 +1,7 @@
+server:
+  start:
+    name: svo-craft-dev
+    startParams:
+      - dogovornyachokWillBe
+      - trumpWins
+  env-var: ${env-var:specialVal}

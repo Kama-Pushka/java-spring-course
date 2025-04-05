@@ -1,0 +1,8 @@
+server:
+  start:
+    name: svo-craft-dev
+    startParams:
+      - debug
+      - checkDogovornyachok
+      - nobodyWins
+  env-var: ${env-var:default}
