@@ -1,0 +1,14 @@
+services:
+  todo:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=maozedong
+      - POSTGRES_DB=todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - todo_data:/var/lib/postgresql/data
+
+volumes:
+  todo_data:
