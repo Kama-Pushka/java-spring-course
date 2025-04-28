@@ -13,15 +13,15 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @RequiredArgsConstructor
 public class PaymentEventListener {
 
-    @Async("threadPoolTaskExecutor")
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handlePaymentSuccessEvent(PaymentProcessedEvent event) {
+        log.info("Handle PaymentProcessedEvent (AFTER_COMMIT)...");
         log.info("Payment was successful.");
     }
 
-    @Async("threadPoolTaskExecutor")
     @TransactionalEventListener(phase = TransactionPhase.AFTER_ROLLBACK)
     public void handlePaymentFailEvent(PaymentProcessedEvent event) {
+        log.info("Handle PaymentProcessedEvent (AFTER_ROLLBACK)...");
         log.info("Payment failed.");
     }
 }

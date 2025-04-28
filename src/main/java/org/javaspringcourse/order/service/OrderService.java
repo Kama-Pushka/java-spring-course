@@ -18,6 +18,7 @@ public class OrderService {
         log.info("Creating an order...");
         log.info("Waiting for payment...");
 
+        log.info("Publish OrderCreatingEvent.");
         eventPublisher.publishEvent(new OrderCreatingEvent(cost, money));
     }
 }

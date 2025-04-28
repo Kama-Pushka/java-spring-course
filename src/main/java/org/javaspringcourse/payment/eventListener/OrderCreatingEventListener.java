@@ -16,8 +16,8 @@ public class OrderCreatingEventListener {
 
     @EventListener
     @Async("threadPoolTaskExecutor")
-    public void handleOrderCreatedEvent(OrderCreatingEvent event) throws InterruptedException {
-        Thread.sleep(2000);
+    public void handleOrderCreatingEvent(OrderCreatingEvent event) throws InterruptedException {
+        Thread.sleep(2000); // имитация долгой работы
         try {
             paymentService.processPayment(event.money(), event.cost());
         } catch (Exception e) {

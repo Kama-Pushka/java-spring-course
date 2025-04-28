@@ -19,6 +19,7 @@ public class PaymentService {
     @Transactional(value = REQUIRES_NEW, rollbackOn = Exception.class)
     public void processPayment(float money, float need) {
         log.info("Trying to pay for order. Current money: {}", money);
+        log.info("Publish PaymentProcessedEvent.");
         eventPublisher.publishEvent(new PaymentProcessedEvent());
 
         log.info("In transaction: {}", TransactionSynchronizationManager.isActualTransactionActive());
