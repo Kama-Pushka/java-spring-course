@@ -35,9 +35,9 @@ public class SecurityConfig {
                         .requestMatchers(PUBLIC_URLS)
                         .permitAll()
                         .requestMatchers(ADMIN_URLS)
-                        .hasAuthority(UserRole.ADMIN.name())
+                        .hasAuthority(UserRole.ROLE_ADMIN.name())
                         .requestMatchers(SUPPORT_URLS)
-                        .hasAuthority(UserRole.SUPPORT.name()))
+                        .hasAuthority(UserRole.ROLE_SUPPORT.name()))
                 .httpBasic(_ -> {})
                 .build();
     }
@@ -52,13 +52,13 @@ public class SecurityConfig {
         var admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder.encode("maozedong"))
-                .authorities(UserRole.ADMIN)
+                .authorities(UserRole.ROLE_ADMIN)
                 .build();
 
         var support = User.builder()
                 .username("support")
                 .password(passwordEncoder.encode("password"))
-                .authorities(UserRole.SUPPORT)
+                .authorities(UserRole.ROLE_SUPPORT)
                 .build();
 
         return new InMemoryUserDetailsManager(admin, support);
